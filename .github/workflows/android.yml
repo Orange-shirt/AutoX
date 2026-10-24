@@ -70,7 +70,10 @@ jobs:
       - name: create-release
         uses: softprops/action-gh-release@v2.2.1
         with:
-          files: 'build/app/signed/**'
+          tag_name: "release-${{ github.run_number }}"  # 动态生成 tag，例如 release-12
+          # 或者：tag_name: ${{ github.sha }} # 使用 commit hash 作为 tag
+          files: build/app/signed/**
+
       - name: publish v7-modules
         if: github.repository == 'aiselp/AutoX'
         run: |
