@@ -70,7 +70,9 @@ jobs:
       - name: create-release
         uses: softprops/action-gh-release@v2.2.1
         with:
+          tag_name: release-${{ github.run_number }} # 加上这一行，每次运行会自动生成带有序号的标签
           files: build/app/signed/**
+
 
       - name: publish v7-modules
         if: github.repository == 'aiselp/AutoX'
